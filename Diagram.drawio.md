@@ -1,1 +1,1 @@
-![diagram](control_work_png.png)
+![control](control.png)
