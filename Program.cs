@@ -1,28 +1,36 @@
-// Напишите программу, которая из имеющегося массива строк формирует массив из строк,
-// длина которых меньше либо равна 3 символа.
-// Первоначальный массив можно задать или ввести с клавиатуры.
+// Задача: Написать программу, которая из имеющегося массива строк формирует новый массив из строк, длина которых меньше, либо равна 3 символам. 
+//Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма. 
+//При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
 
-string[] array = new string[]{
-        "1S01", ">kz", "1S01", "1S01", "1S01", "1S02", "1S02",
-        "1S02", "1H01", "1H01", "1S02", "1S01", "1", "1H01",
-        "1H01", "1H01", "1S02", "Юля", "1M02", "1M02", "1M02"};
+// Инициализация массива строк
+string[] baseArray = { "Sun", "Monday", "Tuersday","Wed", "Thirsday", "Fri", "Sat","1","12","123","1234" };
+int count=0;
+// Вывод начального массива строк baseArray
+printArray(baseArray);
 
-Console.WriteLine("[" + string.Join(", ", array) + "]");
-
-void SelectThreeSymbol(string[] array, int count) {
-    int lenOfarray = array.Length;
-    string[] arraySelect = new string[lenOfarray];
-    int countOfString = 0;
-
-    for(int i = 0; i < lenOfarray; i++) {
-        if(array[i].Length <= count) {
-            arraySelect[countOfString] = array[i];
-            countOfString++;
+string[] createFinalArray(string[] baseArray)
+{
+    for (int i = 0; i < baseArray.Length; i++)
+    {
+    if(baseArray[i].Length <= 3)
+        {
+        count++;
         }
     }
-    Array.Resize(ref arraySelect, countOfString);
-    Console.WriteLine("[" + string.Join(", ", arraySelect) + "]");
+    string[] finalArray = new string[count];
+    count = 0;
+    for (int i = 0; i < baseArray.Length; i++)
+    {
+    if(baseArray[i].Length <= 3)
+        {
+        finalArray[count] = baseArray[i];
+        count++;
+        }
+    }
+    return finalArray;
 }
-
-SelectThreeSymbol(array, 3);
-
+void printArray(string[] array)
+{
+    Console.WriteLine("["+string.Join(", ",array)+"]");
+}
+printArray(createFinalArray(baseArray));
